@@ -16,7 +16,7 @@ Une fois que la commande est tapée, l'utilisateur mentionné reçoit un message
 
 ![receive_embed](examples/receive_embed.png)
 
-## Payer la facture
+### Payer la facture
 
 Lorsque l'utilisateur clique sur ce lien, il est redirigé vers cette page avec son pseudo, son avatar, le nom de la facture et le bouton payer :
 
@@ -24,7 +24,7 @@ Lorsque l'utilisateur clique sur ce lien, il est redirigé vers cette page avec 
 
 Lorsque l'utilisateur clique sur "Payer la commande", il est redirigé vers Paypal.
 
-## Confirmation de paiement de la facture
+### Confirmation de paiement de la facture
 
 Lorsque la facture est payé, le membre est redirigé vers cette page :
 
