@@ -1,0 +1,16 @@
+# Node
+node_modules
+yarn-error.log
+yarn.lock
+
+# DB
+json.sqlite
+
+# IDE
+.vscode
+
+# MacOS
+.DS_Store
+
+# Config
+.env

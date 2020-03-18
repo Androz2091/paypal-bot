@@ -1,0 +1,26 @@
+doctype html
+html
+	head
+		include includes/_head.pug
+		title DiscordMarket
+
+	body
+		section.material-half-bg
+			.cover
+				
+		section.lockscreen-content
+
+			.lock-box
+				img.rounded-circle.user-image(src=avatarURL)
+
+				h4.text-center.user-name Bonjour, #{username}
+
+				p.text-center.text-muted #{name}
+                
+				form.unlock-form(action=URL)
+					.form-group.btn-container
+							button.btn.btn-primary.btn-block(type="submit")
+								i.fa.fa-paypal.fa-lg
+								| Payer votre commande
+
+		include includes/_javascript.pug

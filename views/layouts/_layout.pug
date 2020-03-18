@@ -1,0 +1,31 @@
+doctype html
+html(lang="fr")
+
+	//- Variables to set active page in sidebar
+	block variables
+		- var activePage = 'dashboard'
+		- var activeGroup = 'none'
+
+	head
+		link(rel='icon', type='image/png', href='/favicon.ico')
+
+		meta(name="description", content="Paypal Bot, accept payments from everyone!")
+
+		block title
+			title Discord Market
+
+		include ../includes/_head.pug
+
+	body.app.sidebar-mini.rtl
+
+		// Navbar
+		include ../includes/_header.pug
+
+		// Sidebar menu
+		//include ../includes/_sidebar.pug
+
+		main.app-content
+			block content
+
+		//- Javascripts
+		include ../includes/_javascript.pug

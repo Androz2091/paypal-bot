@@ -1,0 +1,20 @@
+doctype html
+html
+	head
+		include includes/_head.pug
+		title DiscordMarket
+
+	body
+		section.material-half-bg
+			.cover
+				
+		section.lockscreen-content
+
+			.lock-box
+				img.rounded-circle.user-image(src=avatarURL)
+
+				h4.text-center.user-name #{msg}#{username}
+
+				p.text-center.text-muted #{text}
+
+		include includes/_javascript.pug

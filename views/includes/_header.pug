@@ -1,0 +1,18 @@
+header.app-header
+
+	// Navbar Right Menu
+	ul.app-nav
+		// User Menu
+		li.dropdown
+			a.app-nav__item(href='#', data-toggle='dropdown' aria-label="Open Profile Menu")
+				img(style="border-radius:100%;align:middle", src=avatar, width=35, heigth=35)
+				|   #{username}##{discriminator}
+			ul.dropdown-menu.settings-menu.dropdown-menu-right
+				li
+					a.dropdown-item(href='/bots')
+						i.fa.fa-home.fa-lg
+						|  Liste bots
+				li
+					a.dropdown-item(href='/logout')
+						i.fa.fa-sign-out.fa-lg
+						|  Déconnexion
