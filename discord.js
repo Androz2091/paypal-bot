@@ -64,6 +64,8 @@ client.on("message", (message) => {
         .setFooter("Une fois le paiement effectué, vous recevrez un message de confirmation");
 
         member.user.send(embed);
+
+        message.reply(`facture envoyée à ${member.toString()}!`);
     }
 
 });
