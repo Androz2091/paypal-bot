@@ -32,7 +32,7 @@ client.on("message", (message) => {
         if(!member) return message.reply("vous devez mentionner un membre à qui envoyer une facture!");
         const sentPrice = args[1];
         if(!sentPrice) return message.reply("vous devez indiquer un montant!");
-        const price = sentPrice.endsWith("€") ? parseInt(sentPrice.split("€")[0]) : parseInt(sentPrice);
+        const price = sentPrice.endsWith("€") ? parseFloat(sentPrice.split("€")[0]) : parseFloat(sentPrice);
         if(!price) return message.reply("vvous devez indiquer un montant **valide**!");
         const name = args.slice(2).join(" ");
         if(!name) return message.reply("vous devez indiquer un nom de facture!");
