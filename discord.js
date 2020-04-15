@@ -1,72 +1,72 @@
 const {
-    DISCORD_TOKEN,
-    DISCORD_PREFIX,
-    DISCORD_OWNER,
-    BASE_URL
+	DISCORD_TOKEN,
+	DISCORD_PREFIX,
+	DISCORD_OWNER,
+	BASE_URL,
 } = process.env;
 
-const Discord = require("discord.js");
+const Discord = require('discord.js');
 const client = new Discord.Client();
 client.login(DISCORD_TOKEN);
 
-client.on("ready", () => {
-    console.log("Bot is listening");
+client.on('ready', () => {
+	console.log('Bot is listening');
 });
 
-client.on("message", (message) => {
+client.on('message', (message) => {
 
-    // Si le message ne vient pas du propriétaire du bot
-    if(message.author.id !== DISCORD_OWNER) return;
-    // Si le message ne commence pas par le préfixe
-    if(!message.content.startsWith(DISCORD_PREFIX)) return;
+	// If the message does not come from the bot owner
+	if(message.author.id !== DISCORD_OWNER) return;
+	// If the message does not start with the prefix
+	if(!message.content.startsWith(DISCORD_PREFIX)) return;
 
-    // Analysation du message
-    const args = message.content.slice(DISCORD_PREFIX.length).trim().split(/ +/g);
-    const command = args.shift().toLowerCase();
-    
-    // Si la commande est create
-    if(command === "create"){
+	// Message analysis
+	const args = message.content.slice(DISCORD_PREFIX.length).trim().split(/ +/g);
+	const command = args.shift().toLowerCase();
 
-        // Récupération des informations sur la facture
-        const member = message.mentions.members.first();
-        if(!member) return message.reply("vous devez mentionner un membre à qui envoyer une facture!");
-        const sentPrice = args[1];
-        if(!sentPrice) return message.reply("vous devez indiquer un montant!");
-        const price = sentPrice.endsWith("€") ? parseFloat(sentPrice.split("€")[0]) : parseFloat(sentPrice);
-        if(!price) return message.reply("vous devez indiquer un montant **valide**!");
-        const name = args.slice(2).join(" ");
-        if(!name) return message.reply("vous devez indiquer un nom de facture!");
-        const user = client.db.get(member.id);
-        if(!user) client.db.set(member.id, []);
+	// If the command is create
+	if(command === 'create') {
 
-        // Génération de la facture
-        const paymentID = Math.random().toString(36).substring(2, 5) + Math.random().toString(36).substring(2, 5);
-        const paymentData = {
-            id: paymentID,
-            userID: member.id,
-            username: member.user.username,
-            avatarURL: member.user.displayAvatarURL(),
-            paid: false,
-            price,
-            name
-        };
-        // Sauvegarde de la facture
-        client.db.push(member.id, paymentData);
+		// Retrieving invoice information
+		const member = message.mentions.members.first();
+		if(!member) return message.reply('you must mention a member to whom to send an invoice!');
+		const sentPrice = args[1];
+		if(!sentPrice) return message.reply('you must indicate an amount!');
+		const price = sentPrice.endsWith('€') ? parseFloat(sentPrice.split('€')[0]) : parseFloat(sentPrice);
+		if(!price) return message.reply('you must indicate a ** valid ** amount!');
+		const name = args.slice(2).join(' ');
+		if(!name) return message.reply('you must enter an invoice name!');
+		const user = client.db.get(member.id);
+		if(!user) client.db.set(member.id, []);
 
-        // Envoi de la facture
-        const embed = new Discord.MessageEmbed()
-        .setAuthor(`Bonjour, ${member.user.tag}`, member.user.displayAvatarURL())
-        .setDescription("Voici un résumé de votre commande:")
-        .addField("Nom", paymentData.name, true)
-        .addField("Prix", `${paymentData.price}€`, true)
-        .addField("Paiement", `[Effectuer le paiement](${BASE_URL}/payment/${member.id}/${paymentData.id})`)
-        .setColor("#0091fc")
-        .setFooter("Une fois le paiement effectué, vous recevrez un message de confirmation");
+		// Invoice generation
+		const paymentID = Math.random().toString(36).substring(2, 5) + Math.random().toString(36).substring(2, 5);
+		const paymentData = {
+			id: paymentID,
+			userID: member.id,
+			username: member.user.username,
+			avatarURL: member.user.displayAvatarURL(),
+			paid: false,
+			price,
+			name,
+		};
+		// Saving the invoice
+		client.db.push(member.id, paymentData);
 
-        member.user.send(embed);
+		// Sending the invoice
+		const embed = new Discord.MessageEmbed()
+			.setAuthor(`Hello, ${member.user.tag}`, member.user.displayAvatarURL())
+			.setDescription('Here is a summary of your order:')
+			.addField('Name', paymentData.name, true)
+			.addField('Price', `${paymentData.price}€`, true)
+			.addField('Payment', `[Click here](${BASE_URL}/payment/${member.id}/${paymentData.id})`)
+			.setColor('#0091fc')
+			.setFooter('Once payment is made, you will receive a confirmation message');
 
-        message.reply(`facture envoyée à ${member.toString()}!`);
-    }
+		member.user.send(embed);
+
+		message.reply(`invoice sent to ${member.toString()}!`);
+	}
 
 });
 
