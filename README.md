@@ -1,52 +1,54 @@
+(Do note, I did not made this myself, I just translated it from [here](https://github.com/Androz2091/paypal-bot))
+
 # Paypal Bot
 
-## Étapes
+## Steps
 
-### Générer la facture
+### Generate the Generate the invoice
 
-Pour générer une facture, utilisez la commande `!create` sur Discord.
-Utilisation : `!create [@user] [montant] [nom]`
-> Seul l'ID de l'utilisateur défini dans la config en tant que propriétaire (DISCORD_OWNER) peut executer cette commande.
+To generate an invoice, use the `! Create` command on Discord.
+Usage: `! Create [@user] [amount] [name]`
+> Only the user ID defined in the config as owner (DISCORD_OWNER) can execute this command.
 
 ![generate_command](examples/generate_cmd.png)
 
-### Recevoir la facture
+### Receive the invoice
 
-Une fois que la commande est tapée, l'utilisateur mentionné reçoit un message avec un lien pour payer:
+Once the order is typed, the mentioned user receives a message with a link to pay:
 
 ![receive_embed](examples/receive_embed.png)
 
-### Payer la facture
+### Pay the invoice
 
-Lorsque l'utilisateur clique sur ce lien, il est redirigé vers cette page avec son pseudo, son avatar, le nom de la facture et le bouton payer :
+When the user clicks on this link, he is redirected to this page with his nickname, his avatar, the name of the invoice and the pay button:
 
 ![payment_page](examples/payment_page.png)
 
-Lorsque l'utilisateur clique sur "Payer la commande", il est redirigé vers Paypal.
+When the user clicks on "Pay the order", he is redirected to Paypal.
 
-### Confirmation de paiement de la facture
+### Confirmation of invoice payment
 
-Lorsque la facture est payé, le membre est redirigé vers cette page :
+When the invoice is paid, the member is redirected to this page:
 
 ![confirmation](examples/confirmation_payment.png)
 
-et reçoit ce message sur Discord:
+and receives this message on Discord:
 
 ![confirmation_embed](examples/confirmation_embed.png)
 
-### Logs de la facture
+### Invoice logs
 
-Pour l'administration, un système de logs est disponible :
+For administration, a log system is available:
 
 ![logs](examples/logs.png)
 
 ## Config
 
-`DISCORD_TOKEN`: le token de votre bot Discord
-`DISCORD_PREFIX`: le préfixe du bot
-`DISCORD_OWNER`: l'ID de l'utilisateur propriétaire du bot
-`DISCORD_LOGS_CHANNEL`: l'ID du salon de logs
+`DISCORD_TOKEN`: your Discord bot token
+`DISCORD_PREFIX`: the bot prefix
+`DISCORD_OWNER`: the user ID of the bot owner
+`DISCORD_LOGS_CHANNEL`: the log room ID
 
-`BASE_URL`: la base de l'URL du serveur web (dans les exemples `http://localhost:3200`)
+`BASE_URL`: the base of the web server URL (for the example: `http://localhost:3200`)
 
-`PAYPAL_USERNAME`, `PAYPAL_PASSWORD` et `PAYPAL_SIGNATURE` peuvent être trouvé en suivant [ces instructions](https://www.npmjs.com/package/paypal-express-checkout#paypal-account).
+`PAYPAL_USERNAME`, `PAYPAL_PASSWORD` and `PAYPAL_SIGNATURE` can be found by following [these instructions](https://www.npmjs.com/package/paypal-express-checkout#paypal-account).
