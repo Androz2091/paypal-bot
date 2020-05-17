@@ -4,7 +4,8 @@ const {
     DISCORD_LOGS_CHANNEL,
     PAYPAL_USERNAME,
     PAYPAL_PASSWORD,
-    PAYPAL_SIGNATURE
+    PAYPAL_SIGNATURE,
+    PAYPAL_MODE
 } = process.env;
 
 const path = require("path");
@@ -24,7 +25,7 @@ const paypal = Paypal.init(
     PAYPAL_SIGNATURE,
     `${BASE_URL}/check/`,
     `${BASE_URL}/check/`,
-    false
+    PAYPAL_MODE === "SANDBOX"
 );
 
 const paypalTokens = [];
