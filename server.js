@@ -41,9 +41,9 @@ app.use(morgan("dev"))
 
 const fetchPayment = require("./middlewares/fetchPayment");
 
-app.get("/", (res) => {
-    return res.render("index");
-})
+app.get('*', function(res){
+  return res.status(404).render('404');
+});
 
 app.get("/payment/:memberID/:paymentID", fetchPayment, (req, res) => {
     if(req.query.success){
