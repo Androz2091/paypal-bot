@@ -87,6 +87,10 @@ app.get("/pay/:memberID/:paymentID", fetchPayment, (req, res) => {
     });
 });
 
+app.get("/", (req, res) => {
+    return res.render("index");
+})
+
 app.get("/check", (req, res) => {
 
     if(!req.query.token){
