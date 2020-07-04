@@ -41,6 +41,10 @@ app.use(morgan("dev"))
 
 const fetchPayment = require("./middlewares/fetchPayment");
 
+app.get("/", (res) => {
+    return res.render("index");
+})
+
 app.get("/payment/:memberID/:paymentID", fetchPayment, (req, res) => {
     if(req.query.success){
         return res.render("payment-infos", {
@@ -86,10 +90,6 @@ app.get("/pay/:memberID/:paymentID", fetchPayment, (req, res) => {
         res.redirect(url);
     });
 });
-
-app.get("/", (req, res) => {
-    return res.render("index");
-})
 
 app.get("/check", (req, res) => {
 
