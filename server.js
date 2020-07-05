@@ -144,6 +144,10 @@ app.get("/check", (req, res) => {
 
 });
 
+app.get("*", (req, res) => {
+  return res.status(404).render("404");
+});
+
 const listener = app.listen(3200, () => {
     console.log("Your app is listening on port " + listener.address().port);
 });
