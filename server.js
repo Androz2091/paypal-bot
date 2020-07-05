@@ -144,8 +144,8 @@ app.get("/check", (req, res) => {
 
 });
 
-app.get('*', function(res){
-  return res.status(404).render('404');
+app.get("*", function(res){
+  return res.status(404).render("404");
 });
 
 const listener = app.listen(3200, () => {
