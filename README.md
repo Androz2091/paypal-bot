@@ -6,7 +6,7 @@
 
 Pour générer une facture, utilisez la commande `!create` sur Discord.
 Utilisation : `!create [@user] [montant] [nom]`
-> Seul l'ID de l'utilisateur défini dans la config en tant que propriétaire (DISCORD_OWNER) peut executer cette commande.
+> Seul l'ID de l'utilisateur défini dans la config en tant que propriétaire (DISCORD_OWNER) peut exécuter cette commande.
 
 ![generate_command](examples/generate_cmd.png)
 
@@ -49,4 +49,4 @@ Pour l'administration, un système de logs est disponible :
 
 `BASE_URL`: la base de l'URL du serveur web (dans les exemples `http://localhost:3200`)
 
-`PAYPAL_USERNAME`, `PAYPAL_PASSWORD` et `PAYPAL_SIGNATURE` peuvent être trouvé en suivant [ces instructions](https://www.npmjs.com/package/paypal-express-checkout#paypal-account).
+`PAYPAL_USERNAME`, `PAYPAL_PASSWORD` et `PAYPAL_SIGNATURE` peuvent être trouvés en suivant [ces instructions](https://www.npmjs.com/package/paypal-express-checkout#paypal-account).
